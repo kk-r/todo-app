@@ -1,0 +1,4 @@
+tests/pactTestWrapper.js
+tests/*.spec.js
+tests/unit/*.pact.js
+tests/unit/*.spec.js

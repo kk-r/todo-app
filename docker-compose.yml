@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  todo-app:
+    container_name: todo-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - '8081:80'
+    environment:
+      VUE_APP_API_BASE_URL: http://localhost:9000
+      VUE_APP_NODE_ENV: local

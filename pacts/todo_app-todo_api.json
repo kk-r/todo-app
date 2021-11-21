@@ -1,0 +1,56 @@
+{
+  "consumer": {
+    "name": "Todo App"
+  },
+  "provider": {
+    "name": "Todo Api"
+  },
+  "interactions": [
+    {
+      "description": "A request to retrieve all todos",
+      "providerState": "I have a list of todos",
+      "request": {
+        "method": "GET",
+        "path": "/api/todos"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+        }
+      }
+    },
+    {
+      "description": "a request to add a todo item",
+      "providerState": "a todo item is added",
+      "request": {
+        "method": "POST",
+        "path": "/api/todos",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "title": "Test Pact add"
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "0": {
+            "title": "Test Pact add"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: todo-app
+      tier: frontend
+      track: stable
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: todo-app
+        tier: frontend
+        track: stable
+    spec:
+      containers:
+      - name: nginx
+        image: "<IMAGE>"
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/usr/sbin/nginx","-s","quit"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: default
+spec:
+  selector:
+    app: todo-app
+    tier: frontend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
